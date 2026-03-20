@@ -348,7 +348,7 @@ CMD ["python", "app.py"]
             readme += "## Performance Metrics\n\n"
             readme += f"- **Average Latency**: {benchmark_results.latency_ms:.2f} ms\n"
             readme += f"- **Memory Usage**: {benchmark_results.memory_usage_mb:.2f} MB\n"
-            readme += f"- **Throughput**: {benchmark_results.throughput_samples_per_second:.2f} samples/second\n\n"
+            readme += f"- **Throughput**: {benchmark_results.throughput:.2f} samples/second\n\n"
         
         readme += "## Quick Start\n\n"
         readme += "### 1. Install dependencies\n"
