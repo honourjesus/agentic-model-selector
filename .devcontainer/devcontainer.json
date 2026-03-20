@@ -1,0 +1,35 @@
+{
+  "name": "Agentic Model Selector",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/nvidia-cuda:1": {
+      "version": "11.8"
+    }
+  },
+  "postCreateCommand": "pip install -r requirements.txt && python -m spacy download en_core_web_sm",
+  "postStartCommand": "echo '🚀 Ready for agentic development!'",
+  "forwardPorts": [8000, 7860, 3000],
+  "portsAttributes": {
+    "8000": {
+      "label": "FastAPI",
+      "onAutoForward": "notify"
+    },
+    "7860": {
+      "label": "Gradio",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ]
+    }
+  }
+}

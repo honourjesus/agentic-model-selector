@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  model-selector:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: hf-model-selector
+    volumes:
+      - ../deployments:/app/deployments
+      - ~/.cache/huggingface:/home/appuser/.cache/huggingface
+    environment:
+      - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN}
+      - CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-}
+    stdin_open: true
+    tty: true
+    command: ["sentiment analysis", "--deploy", "fastapi"]
+
+  # Optional: Jupyter for development
+  jupyter:
+    image: jupyter/base-notebook:latest
+    container_name: hf-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../:/home/jovyan/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    command: start-notebook.sh --NotebookApp.token=''

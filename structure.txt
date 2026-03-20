@@ -1,0 +1,37 @@
+# project_structure.txt
+
+huggingface-model-selector/
+├── src/
+│   ├── agents/
+│   │   ├── __init__.py
+│   │   ├── input_agent.py      # Parses user requirements
+│   │   ├── research_agent.py   # Searches HuggingFace
+│   │   ├── evaluation_agent.py # Scores models
+│   │   ├── benchmarking_agent.py # Tests performance
+│   │   └── deployment_agent.py # Generates deployment code
+│   ├── models/
+│   │   ├── __init__.py
+│   │   └── schemas.py          # Pydantic models/data classes
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   └── helpers.py           # Helper functions
+│   ├── config/
+│   │   ├── __init__.py
+│   │   └── settings.py          # Configuration
+│   └── main.py                   # Main orchestrator
+├── deployments/                   # Generated deployment code
+├── tests/
+│   ├── __init__.py
+│   └── test_agents.py
+├── docker/
+│   ├── Dockerfile
+│   └── docker-compose.yml
+├── .github/
+│   └── workflows/
+│       └── ci.yml                # GitHub Actions
+├── requirements.txt
+├── setup.py
+├── .env.example
+├── .gitignore
+├── README.md
+└── run.py                         # Entry point
